@@ -19,7 +19,7 @@ object EitherServiceSpecification extends Specification {
       someService.getRemoteDate().isRight must beTrue
     }
 
-    "SomeEitherService.getRemouteData with error must be left" in {
+    "SomeEitherService.getSomeDate with error must be left" in {
       val someService = new SomeEitherService with ServiceWithExceptionEvaluation
       someService.getSomeDate().isLeft must beTrue
     }
