@@ -26,33 +26,33 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="SBT: org.scala-lang:scala-library:2.11.8:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.typelevel:macro-compat_2.11:1.1.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.typelevel:machinist_2.11:0.4.1:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.typelevel:discipline_2.11:0.4:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.typelevel:cats_2.11:0.6.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.typelevel:cats-macros_2.11:0.6.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.typelevel:cats-laws_2.11:0.6.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.typelevel:cats-kernel_2.11:0.6.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.typelevel:cats-kernel-laws_2.11:0.6.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.typelevel:cats-free_2.11:0.6.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.typelevel:cats-core_2.11:0.6.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.typelevel:catalysts-platform_2.11:0.0.2:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.typelevel:catalysts-macros_2.11:0.0.2:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.scalacheck:scalacheck_2.11:1.12.5:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.scala-sbt:test-interface:1.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.scala-lang:scala-reflect:2.11.7:jar" level="project" />
-    <orderEntry type="library" name="SBT: com.github.mpilquist:simulacrum_2.11:0.7.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: io.reactivex:rxscala_2.11:0.26.2:jar" level="project" />
-    <orderEntry type="library" name="SBT: io.reactivex:rxjava:1.1.6:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="SBT: org.scala-lang:scala-reflect:2.11.8:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="SBT: org.scala-lang.modules:scala-parser-combinators_2.11:1.0.4:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="SBT: org.scala-lang.modules:scala-xml_2.11:1.0.5:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="SBT: org.scalaz:scalaz-concurrent_2.11:7.2.3:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="SBT: org.scalaz:scalaz-core_2.11:7.2.3:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="SBT: org.scalaz:scalaz-effect_2.11:7.2.3:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="SBT: org.specs2:specs2-codata_2.11:3.8.4:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="SBT: org.specs2:specs2-common_2.11:3.8.4:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="SBT: org.specs2:specs2-core_2.11:3.8.4:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="SBT: org.specs2:specs2-matcher_2.11:3.8.4:jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="SBT: org.specs2:specs2-core_2.11:3.8.4:jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="SBT: org.specs2:specs2-common_2.11:3.8.4:jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="SBT: org.specs2:specs2-codata_2.11:3.8.4:jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="SBT: org.scalaz:scalaz-effect_2.11:7.2.3:jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="SBT: org.scalaz:scalaz-core_2.11:7.2.3:jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="SBT: org.scalaz:scalaz-concurrent_2.11:7.2.3:jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="SBT: org.scala-lang.modules:scala-xml_2.11:1.0.5:jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="SBT: org.scala-lang.modules:scala-parser-combinators_2.11:1.0.4:jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="SBT: org.scala-lang:scala-reflect:2.11.8:jar" level="project" />
+    <orderEntry type="library" name="SBT: io.reactivex:rxjava:1.1.6:jar" level="project" />
+    <orderEntry type="library" name="SBT: io.reactivex:rxscala_2.11:0.26.2:jar" level="project" />
+    <orderEntry type="library" name="SBT: com.github.mpilquist:simulacrum_2.11:0.7.0:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.scala-lang:scala-reflect:2.11.7:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.scala-sbt:test-interface:1.0:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.scalacheck:scalacheck_2.11:1.12.5:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.typelevel:catalysts-macros_2.11:0.0.2:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.typelevel:catalysts-platform_2.11:0.0.2:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.typelevel:cats-core_2.11:0.6.0:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.typelevel:cats-free_2.11:0.6.0:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.typelevel:cats-kernel-laws_2.11:0.6.0:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.typelevel:cats-kernel_2.11:0.6.0:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.typelevel:cats-laws_2.11:0.6.0:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.typelevel:cats-macros_2.11:0.6.0:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.typelevel:cats_2.11:0.6.0:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.typelevel:discipline_2.11:0.4:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.typelevel:machinist_2.11:0.4.1:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.typelevel:macro-compat_2.11:1.1.0:jar" level="project" />
   </component>
 </module>

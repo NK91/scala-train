@@ -30,23 +30,12 @@ object ExtendedEitherServiceSpecification extends Specification {
     "open either from different sides" in {
       val service = new ExtendedEitherService
 
-      val result = service.getSomeDataList(6).right.map(
-        data => Right(data.filter(d => filterConditions(d)).map(extractingSomeData))
-      )
-
-      def extractingSomeData: (SomeDate) => Option[SomeDate] = {
-        someData => {
-          service.getOptionalSomeData(filterServiceConditions(someData)).right.toOption.flatten.map {
-            optionalData => mergeResult(someData, optionalData)
-          }
-        }
-      }
-
+      val result: Either[Exception, List[SomeDate]] = service.getSomeDataListWithServiceAndDataFilters(filterConditions, filterServiceConditions, mergeResult)
       println(result)
-      true must beTrue
+      result.isRight must beTrue
+      result.right.get.size must_== 2
     }
   }
-
 
   def filterConditions(d: SomeDate): Boolean = d.id % 2 == 1
 
