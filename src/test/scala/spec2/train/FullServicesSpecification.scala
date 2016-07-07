@@ -11,6 +11,8 @@ object FullServicesSpecification extends Specification {
     s2"""
        ${"EitherSpec" ~ EitherServiceSpecification}
        ${"RxSpec" ~ RxServiceSpecification}
+       ${"ExtendedRxSpec" ~ ExtendedEitherServiceSpecification}
+       ${"XorSpec" ~ XorSomeServiceSpecification}
      """
 
 }
