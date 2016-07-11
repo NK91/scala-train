@@ -5,7 +5,7 @@ import cats.data.Xor
 /**
   * Created by kisilnazar on 05.07.16.
   */
-object Cats extends App {
+object CatsApp extends App {
   val xorR = Xor.right(5)
   println(xorR.map(_ + 1))
 
