@@ -13,6 +13,7 @@ object FullServicesSpecification extends Specification {
        ${"RxSpec" ~ RxServiceSpecification}
        ${"ExtendedRxSpec" ~ ExtendedEitherServiceSpecification}
        ${"XorSpec" ~ XorSomeServiceSpecification}
+       ${"ExtendedXorSpec" ~ ExtendedXorSomeServiceSpecification}
      """
 
 }

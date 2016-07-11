@@ -1,8 +1,8 @@
 package spec2.train.services
 
 import org.specs2.mutable.Specification
-import org.train.rx.ServiceWithExceptionEvaluation
 import org.train.rx.extention.SomeEitherService
+import org.train.utlis.EvaluationWithException
 
 /**
   * Created by kisilnazar on 03.07.16.
@@ -20,7 +20,7 @@ object EitherServiceSpecification extends Specification {
     }
 
     "SomeEitherService.getSomeDate with error must be left" in {
-      val someService = new SomeEitherService with ServiceWithExceptionEvaluation
+      val someService = new SomeEitherService with EvaluationWithException
       someService.getSomeDate().isLeft must beTrue
     }
   }

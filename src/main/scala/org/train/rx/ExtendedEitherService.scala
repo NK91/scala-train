@@ -40,7 +40,4 @@ class ExtendedEitherService extends SomeEitherService {
       case e: Exception => Left(e)
       case _ => Left(new Exception("Uknown exception"))
     } get
-
-  private def someEvaluating(i: Int): SomeDate = SomeDate(i, s"SomeDate with index $i")
-
 }

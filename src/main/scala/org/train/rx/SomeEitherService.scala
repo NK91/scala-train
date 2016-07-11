@@ -11,6 +11,7 @@ package extention {
 
   trait Evaluation {
     def someEvaluating(): SomeDate = SomeDate(0, "SomeData from someEvaluating")
+    def someEvaluating(index: Int): SomeDate = SomeDate(index, s"SomeData from someEvaluating with index=$index")
   }
 
   trait SomeService[T] extends Evaluation {

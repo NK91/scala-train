@@ -1,6 +1,7 @@
 package org.train.rx
 
 import org.train.rx.extention.{SomeDate, SomeEitherService, SomeRxService}
+import org.train.utlis.EvaluationWithException
 
 /**
   * Created by kisilnazar on 22.06.16.
@@ -29,13 +30,13 @@ object RxInsteadEitherExample extends App {
     */
 
   // Either way
-  val eitherServiceWithException = new SomeEitherService() with ServiceWithExceptionEvaluation
+  val eitherServiceWithException = new SomeEitherService() with EvaluationWithException
   val eitherResultWithException = for {localDate <- eitherServiceWithException.getSomeDate().right
                                        remoteDate <- eitherServiceWithException.getRemoteDate().right
   } yield mergeResult(remoteDate, localDate)
 
   // RxScala way
-  val rxServiceWithException = new SomeRxService() with ServiceWithExceptionEvaluation
+  val rxServiceWithException = new SomeRxService() with EvaluationWithException
 
   val rxResultWithException = for {localDate <- rxServiceWithException.getSomeDate()
                                    remoteDate <- rxServiceWithException.getRemoteDate()

@@ -1,6 +1,7 @@
 package org.train.cats
 
 import cats.data.Xor
+import org.train.utlis.CatsUtils._
 
 /**
   * Created by kisilnazar on 05.07.16.
