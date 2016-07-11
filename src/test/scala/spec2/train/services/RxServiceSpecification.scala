@@ -1,4 +1,4 @@
-package spec2.train
+package spec2.train.services
 
 import org.specs2.mutable.Specification
 import org.train.rx.extention.SomeRxService
