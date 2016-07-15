@@ -15,12 +15,12 @@ class ExtendedXorSomeService extends XorSomeService with IndexedExtractor {
   def getSomeDataList(capacity: Int): Or[List[SomeDate]] =
     Try {
       Xor.right((1 to capacity map (i => someEvaluating(i))).toList)
-    } recover LeftXor get
+    } recoverWithDefault() get
 
   def getSomeDataIndex(someDate: SomeDate) : Or[Int] = {
     Try {
       Xor.right(indexExtractor(someDate.id))
-    } recover LeftXor get
+    } recoverWithDefault() get
   }
 
 
