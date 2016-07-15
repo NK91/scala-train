@@ -1,13 +1,14 @@
 package org.train.cats
 
 import cats.data.{Xor, XorT}
+import cats.std.all._
 import org.train.rx.extention.SomeDate
-import org.train.utlis.CatsUtils._
 
 /**
-  * Created by kisilnazar on 05.07.16.
+  * Created by nk91 on 15.07.16.
   */
-object CatsApp extends App {
+object CatsApplication extends App {
+
   val xorR = Xor.right(5)
   println(xorR.map(_ + 1))
 
@@ -23,6 +24,8 @@ object CatsApp extends App {
   } yield {
     mergeResult(data1, data2)
   }
+
+  result.map(println)
 
   def mergeResult(d: SomeDate, optData: SomeDate): SomeDate = SomeDate(d.id, s"Merged ${d.data} with ${optData.data}")
 
