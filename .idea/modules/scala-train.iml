@@ -44,15 +44,15 @@
     <orderEntry type="library" name="SBT: org.scalacheck:scalacheck_2.11:1.12.5:jar" level="project" />
     <orderEntry type="library" name="SBT: org.typelevel:catalysts-macros_2.11:0.0.2:jar" level="project" />
     <orderEntry type="library" name="SBT: org.typelevel:catalysts-platform_2.11:0.0.2:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.typelevel:cats-core_2.11:0.6.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.typelevel:cats-free_2.11:0.6.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.typelevel:cats-kernel-laws_2.11:0.6.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.typelevel:cats-kernel_2.11:0.6.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.typelevel:cats-laws_2.11:0.6.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.typelevel:cats-macros_2.11:0.6.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.typelevel:cats_2.11:0.6.0:jar" level="project" />
     <orderEntry type="library" name="SBT: org.typelevel:discipline_2.11:0.4:jar" level="project" />
     <orderEntry type="library" name="SBT: org.typelevel:machinist_2.11:0.4.1:jar" level="project" />
     <orderEntry type="library" name="SBT: org.typelevel:macro-compat_2.11:1.1.0:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.typelevel:cats-core_2.11:0.6.1:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.typelevel:cats-free_2.11:0.6.1:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.typelevel:cats-kernel-laws_2.11:0.6.1:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.typelevel:cats-kernel_2.11:0.6.1:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.typelevel:cats-laws_2.11:0.6.1:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.typelevel:cats-macros_2.11:0.6.1:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.typelevel:cats_2.11:0.6.1:jar" level="project" />
   </component>
 </module>

@@ -1,8 +1,12 @@
 package org.train.utlis
 
-import cats.data.Xor
+import cats.data.{Xor, XorT}
+import org.train.rx.extention.SomeDate
 
+import scala.concurrent.Future
 import scala.util.Try
+import scala.concurrent.ExecutionContext.Implicits.global
+import cats.std.all._
 
 /**
   * Created by nk91 on 11.07.16.
@@ -22,6 +26,12 @@ object CatsUtils {
 
   implicit class EitherToXor[+A, B](either: Either[A, B]) {
     def toXor = Xor.fromEither(either)
+  }
+
+  implicit class WrapIntoXorT[T](any: T) {
+    def toFutureXorT: XorT[Future, Exception, T] = XorT.right[Future, Exception, T](Future(any))
+    def toOptionXorT: XorT[Option, Exception, T] = XorT.right[Option, Exception, T](Option(any))
+    def toOptionXorTNone: XorT[Option, Exception, T] = XorT.right[Option, Exception, T](None)
   }
 
 }
