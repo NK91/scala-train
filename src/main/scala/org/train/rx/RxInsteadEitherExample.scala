@@ -1,6 +1,6 @@
 package org.train.rx
 
-import org.train.rx.extention.{SomeDate, SomeEitherService, SomeRxService}
+import org.train.rx.extention.{SomeData, SomeEitherService, SomeRxService}
 import org.train.utlis.EvaluationWithException
 
 /**
@@ -48,8 +48,8 @@ object RxInsteadEitherExample extends App {
   rxResultWithException.subscribe(println(_), println(_)) // onNext, onError
 
 
-  def mergeResult(remoteDate: SomeDate, localDate: SomeDate): SomeDate = {
-    SomeDate(3, remoteDate.data + " merged with " + localDate.data)
+  def mergeResult(remoteDate: SomeData, localDate: SomeData): SomeData = {
+    SomeData(3, remoteDate.data + " merged with " + localDate.data)
   }
 }
 

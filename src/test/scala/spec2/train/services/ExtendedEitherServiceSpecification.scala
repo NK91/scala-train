@@ -2,7 +2,7 @@ package spec2.train.services
 
 import org.specs2.mutable.Specification
 import org.train.rx.ExtendedEitherService
-import org.train.rx.extention.SomeDate
+import org.train.rx.extention.SomeData
 
 /**
   * Created by kisilnazar on 04.07.16.
@@ -30,17 +30,17 @@ object ExtendedEitherServiceSpecification extends Specification {
     "open either from different sides" in {
       val service = new ExtendedEitherService
 
-      val result: Either[Exception, List[SomeDate]] = service.getSomeDataListWithServiceAndDataFilters(filterConditions, filterServiceConditions, mergeResult)
+      val result: Either[Exception, List[SomeData]] = service.getSomeDataListWithServiceAndDataFilters(filterConditions, filterServiceConditions, mergeResult)
       println(result)
       result.isRight must beTrue
       result.right.get.size must_== 2
     }
   }
 
-  def filterConditions(d: SomeDate): Boolean = d.id % 2 == 1
+  def filterConditions(d: SomeData): Boolean = d.id % 2 == 1
 
-  def filterServiceConditions(d: SomeDate): Boolean = d.id % 3 == 1
+  def filterServiceConditions(d: SomeData): Boolean = d.id % 3 == 1
 
-  def mergeResult(d: SomeDate, optData: SomeDate): SomeDate = SomeDate(d.id, s"Merged ${d.data} with ${optData.data}")
+  def mergeResult(d: SomeData, optData: SomeData): SomeData = SomeData(d.id, s"Merged ${d.data} with ${optData.data}")
 
 }

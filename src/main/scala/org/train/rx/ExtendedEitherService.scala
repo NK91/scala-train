@@ -1,6 +1,6 @@
 package org.train.rx
 
-import org.train.rx.extention.{SomeDate, SomeEitherService}
+import org.train.rx.extention.{SomeData, SomeEitherService}
 
 import scala.util.Try
 
@@ -9,8 +9,8 @@ import scala.util.Try
   */
 class ExtendedEitherService extends SomeEitherService {
 
-  def getSomeDataListWithServiceAndDataFilters(filterConditions: SomeDate => Boolean, filterServiceConditions: SomeDate => Boolean, mergeResult: (SomeDate, SomeDate) => SomeDate): Product with Serializable with Either[Exception, List[SomeDate]] = {
-    def extractingSomeData(someDate: SomeDate): Option[SomeDate] = {
+  def getSomeDataListWithServiceAndDataFilters(filterConditions: SomeData => Boolean, filterServiceConditions: SomeData => Boolean, mergeResult: (SomeData, SomeData) => SomeData): Product with Serializable with Either[Exception, List[SomeData]] = {
+    def extractingSomeData(someDate: SomeData): Option[SomeData] = {
       getOptionalSomeData(filterServiceConditions(someDate)).right.toOption.flatten.map {
         optionalData => mergeResult(someDate, optionalData)
       }
@@ -26,14 +26,14 @@ class ExtendedEitherService extends SomeEitherService {
     result
   }
 
-  def getOptionalSomeData(isWrongData: Boolean): Either[Exception, Option[SomeDate]] =
+  def getOptionalSomeData(isWrongData: Boolean): Either[Exception, Option[SomeData]] =
     if (isWrongData) {
       Left(new Exception("Wrong date"))
     } else {
       Right(Some(someEvaluating()))
     }
 
-  def getSomeDataList(capacity: Int): Either[Exception, List[SomeDate]] =
+  def getSomeDataList(capacity: Int): Either[Exception, List[SomeData]] =
     Try {
       Right((1 to capacity map (i => someEvaluating(i))).toList)
     } recover {
