@@ -2,7 +2,7 @@ package spec2.train.services
 
 import org.specs2.mutable.Specification
 import org.train.cats.ExtendedXorSomeService
-import org.train.rx.extention.SomeDate
+import org.train.rx.extention.SomeData
 import org.train.utlis.IndexedExtractor
 
 /**
@@ -15,7 +15,7 @@ object ExtendedXorSomeServiceSpecification extends Specification {
   "ExtendedXorSomeService-specification" should {
 
     val CAPACITY = 10
-    val mockSomeDate = SomeDate(101, "mock of SomeDate")
+    val mockSomeDate = SomeData(101, "mock of SomeDate")
 
     val service = new ExtendedXorSomeService
     val mockedIndexedExtractor: IndexedExtractor = service

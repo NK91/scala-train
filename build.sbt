@@ -8,7 +8,12 @@ libraryDependencies += "io.reactivex" %% "rxscala" % "0.26.2"
 
 libraryDependencies += "org.typelevel" %% "cats" % "0.6.1"
 
+libraryDependencies += "io.getclump" %% "clump-scala" % "1.1.0"
+
+libraryDependencies += "io.getclump" %% "clump-twitter" % "1.1.0"
+
 libraryDependencies ++= Seq("org.specs2" %% "specs2-core" % "3.8.4" % "test")
+
 
 scalacOptions in Test ++= Seq("-Yrangepos")
     

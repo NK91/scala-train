@@ -10,8 +10,8 @@ package extention {
   import rx.lang.scala.Observable
 
   trait Evaluation {
-    def someEvaluating(): SomeDate = SomeDate(0, "SomeData from someEvaluating")
-    def someEvaluating(index: Int): SomeDate = SomeDate(index, s"SomeData from someEvaluating with index=$index")
+    def someEvaluating(): SomeData = SomeData(0, "SomeData from someEvaluating")
+    def someEvaluating(index: Int): SomeData = SomeData(index, s"SomeData from someEvaluating with index=$index")
   }
 
   trait SomeService[T] extends Evaluation {
@@ -22,9 +22,9 @@ package extention {
   }
 
 
-  class SomeEitherService extends SomeService[Either[Exception, SomeDate]] {
+  class SomeEitherService extends SomeService[Either[Exception, SomeData]] {
 
-    override def getSomeDate(): Either[Exception, SomeDate] = {
+    override def getSomeDate(): Either[Exception, SomeData] = {
       Try {
         Right(someEvaluating())
       } recover {
@@ -32,18 +32,18 @@ package extention {
       } get
     }
 
-    override def getRemoteDate(): Either[Exception, SomeDate] = {
+    override def getRemoteDate(): Either[Exception, SomeData] = {
       Try {
-        Right(SomeDate(1, "RemoteDate"))
+        Right(SomeData(1, "RemoteDate"))
       } recover {
         case e: Exception => Left(e)
       } get
     }
   }
 
-  class SomeRxService extends SomeService[Observable[SomeDate]] {
+  class SomeRxService extends SomeService[Observable[SomeData]] {
 
-    override def getSomeDate(): Observable[SomeDate] = {
+    override def getSomeDate(): Observable[SomeData] = {
       Observable(subscription => Try {
         subscription.onNext(someEvaluating())
       } recover {
@@ -51,9 +51,9 @@ package extention {
       })
     }
 
-    override def getRemoteDate(): Observable[SomeDate] = {
+    override def getRemoteDate(): Observable[SomeData] = {
       Observable(subscription => Try {
-        subscription.onNext(SomeDate(1, "RemoteDate"))
+        subscription.onNext(SomeData(1, "RemoteDate"))
       } recover {
         case e: Throwable => subscription.onError(e)
       })
@@ -62,6 +62,6 @@ package extention {
 
   case class ServiceException(message: String = "Some exception happen") extends Exception(message)
 
-  case class SomeDate(id: Long, data: String)
+  case class SomeData(id: Long, data: String)
 
 }
