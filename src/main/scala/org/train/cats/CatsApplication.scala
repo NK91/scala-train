@@ -1,13 +1,11 @@
 package org.train.cats
 
-import cats.data.Xor.Right
 import cats.data.{Xor, XorT}
 import cats.std.all._
+import io.getclump.Clump
 import org.train.rx.extention.SomeData
 
-import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
-
 /**
   * Created by nk91 on 15.07.16.
   */
@@ -21,8 +19,9 @@ object CatsApplication extends App {
 
 
   val someService = new XorTSomeService
+  val xorTFutureSomeService = new XorTFutureSomeService
 
-  val result: XorT[Option, Exception, SomeData] = for {
+  val result = for {
     data1 <- someService.getRemoteDate()
     data2 <- someService.getSomeDate()
   } yield {
