@@ -5,6 +5,7 @@ import org.train.container.FutureContainer._
 import org.train.container.OptionContainer._
 import org.train.rx.extention.{SomeData, SomeService}
 
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
 /**
@@ -12,8 +13,8 @@ import scala.concurrent.Future
   */
 class SomeContainerService extends SomeService[XorT[Container, String, SomeData]] {
   override def getSomeDate(): XorT[Container, String, SomeData] =
-    XorT.right(Option(SomeData()).toContainer)
+    XorT.right[Container, String, SomeData](Option(SomeData()).toContainer)
 
   override def getRemoteDate(): XorT[Container, String, SomeData] =
-    XorT.right(Future(SomeData()).toContainer)
+    XorT.right[Container, String, SomeData](Future(SomeData()).toContainer)
 }

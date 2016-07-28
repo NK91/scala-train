@@ -24,7 +24,8 @@ object ContainerApp extends App {
   }
 
 
-  Await.result(result.value, 2 seconds)
+  val someDateResult = Await.result(result.value, 2 seconds)
+  println(someDateResult)
 
   def mergeResult(d: SomeData, optData: SomeData): SomeData = SomeData(d.id, s"Merged ${d.data} with ${optData.data}")
 
