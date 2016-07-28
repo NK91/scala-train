@@ -62,6 +62,6 @@ package extention {
 
   case class ServiceException(message: String = "Some exception happen") extends Exception(message)
 
-  case class SomeData(id: Long, data: String)
+  case class SomeData(id: Long = 0, data: String = "default value")
 
 }

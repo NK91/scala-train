@@ -10,18 +10,18 @@ import scala.util.{Failure, Success}
 /**
   * Created by kisilnazar on 24.07.16.
   */
-trait OwnContainer[+A] extends Awaitable[A] {
+trait Container[+A] extends Awaitable[A] {
 
-  def map[B](f: A => B): OwnContainer[B]
+  def map[B](f: A => B): Container[B]
 
-  def flatMap[B](f: A => OwnContainer[B]): OwnContainer[B]
+  def flatMap[B](f: A => Container[B]): Container[B]
 
 }
 
-class EmptyContainer[+A](value: A) extends OwnContainer[A] {
-  override def map[B](f: (A) => B): OwnContainer[B] = new EmptyContainer[B](f(value))
+class EmptyContainer[+A](value: A) extends Container[A] {
+  override def map[B](f: (A) => B): Container[B] = new EmptyContainer[B](f(value))
 
-  override def flatMap[B](f: (A) => OwnContainer[B]): OwnContainer[B] = f(value)
+  override def flatMap[B](f: (A) => Container[B]): Container[B] = f(value)
 
   @scala.throws[InterruptedException](classOf[InterruptedException])
   @scala.throws[TimeoutException](classOf[TimeoutException])
@@ -31,11 +31,11 @@ class EmptyContainer[+A](value: A) extends OwnContainer[A] {
   override def result(atMost: Duration)(implicit permit: CanAwait): A = value
 }
 
-class FutureContainer[+A](future: Future[A]) extends OwnContainer[A] {
-  override def map[B](f: (A) => B): OwnContainer[B] = new FutureContainer[B](future.map(f))
+class FutureContainer[+A](future: Future[A]) extends Container[A] {
+  override def map[B](f: (A) => B): Container[B] = new FutureContainer[B](future.map(f))
 
   // TODO: can be better!!! think more!!!!
-  override def flatMap[B](f: (A) => OwnContainer[B]): OwnContainer[B] = {
+  override def flatMap[B](f: (A) => Container[B]): Container[B] = {
     val promise = Promise[B]()
     future.onComplete {
       case Success(a) => f(a).map(b => promise.success(b))
@@ -62,10 +62,10 @@ object FutureContainer {
 
 }
 
-class OptionContainer[+A](option: Option[A]) extends OwnContainer[A] {
-  override def map[B](f: (A) => B): OwnContainer[B] = new OptionContainer[B](option.map(f))
+class OptionContainer[+A](option: Option[A]) extends Container[A] {
+  override def map[B](f: (A) => B): Container[B] = new OptionContainer[B](option.map(f))
 
-  override def flatMap[B](f: (A) => OwnContainer[B]): OwnContainer[B] = option match {
+  override def flatMap[B](f: (A) => Container[B]): Container[B] = option match {
     case Some(value) => f(value)
     case None => new OptionContainer[B](None)
   }
@@ -87,11 +87,12 @@ object OptionContainer {
 
 }
 
-object OwnContainer {
-  implicit def monoid = new Monad[OwnContainer] {
-    def flatMap[A, B](fa: OwnContainer[A])(f: (A) => OwnContainer[B]): OwnContainer[B] = fa.flatMap(f)
+object Container {
 
-    def pure[A](x: A): OwnContainer[A] = new EmptyContainer[A](x)
+  implicit def monad = new Monad[Container] {
+    def flatMap[A, B](fa: Container[A])(f: (A) => Container[B]): Container[B] = fa.flatMap(f)
+
+    def pure[A](x: A): Container[A] = new EmptyContainer[A](x)
   }
 
 }

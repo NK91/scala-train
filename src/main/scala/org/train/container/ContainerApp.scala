@@ -1,8 +1,8 @@
 package org.train.container
 
 import cats.data.XorT
+import org.train.container.Container._
 import org.train.rx.extention.SomeData
-import org.train.container.OwnContainer._
 
 import scala.concurrent.Await
 import scala.concurrent.duration._
@@ -10,17 +10,16 @@ import scala.concurrent.duration._
 /**
   * Created by kisilnazar on 24.07.16.
   */
-object ContainerApp extends App{
+object ContainerApp extends App {
 
 
   val someContainerService = new SomeContainerService
 
 
-  val result: XorT[OwnContainer, String, SomeData] = for {
+  val result: XorT[Container, String, SomeData] = for {
     data1 <- someContainerService.getRemoteDate()
     data2 <- someContainerService.getSomeDate()
   } yield {
-    println(data1 + " " + data2)
     mergeResult(data1, data2)
   }
 

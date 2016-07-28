@@ -10,15 +10,10 @@ import scala.concurrent.Future
 /**
   * Created by kisilnazar on 24.07.16.
   */
-class SomeContainerService
-  extends SomeService[XorT[OwnContainer, String, SomeData]] {
-  override def getSomeDate(): XorT[OwnContainer, String, SomeData] =
-    XorT.right[OwnContainer, String, SomeData](
-      Option(SomeData(33, "somedate-option-container")).toContainer)
+class SomeContainerService extends SomeService[XorT[Container, String, SomeData]] {
+  override def getSomeDate(): XorT[Container, String, SomeData] =
+    XorT.right(Option(SomeData()).toContainer)
 
-  override def getRemoteDate(): XorT[OwnContainer, String, SomeData] =
-    XorT.right[OwnContainer, String, SomeData](
-      Future
-        .successful(SomeData(32133, "somedate-future-container"))
-        .toContainer)
+  override def getRemoteDate(): XorT[Container, String, SomeData] =
+    XorT.right(Future(SomeData()).toContainer)
 }
