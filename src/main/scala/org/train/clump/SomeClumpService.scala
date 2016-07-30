@@ -1,11 +1,10 @@
-package org.train.container
+package org.train.clump
 
 import cats.data.XorT
-import io.getclump.Clump
-import io.getclump._
-import org.train.rx.extention.{SomeData, SomeService}
-import org.train.container.Implicits._
 import com.twitter.util.Future
+import io.getclump.{Clump, _}
+import org.train.clump.Implicits._
+import org.train.rx.extention.{SomeData, SomeService}
 
 
 /**

@@ -1,13 +1,12 @@
-package org.train.container
-import cats.data.XorT
-import org.train.container.Implicits._
-import org.train.rx.extention.SomeData
-import cats.std.all
-import io.getclump.Clump
+package org.train.clump
 
-import scala.concurrent.duration._
-import scala.concurrent.ExecutionContext.Implicits.global
+import cats.data.XorT
 import com.twitter.util.Await
+import io.getclump.Clump
+import org.train.clump.Implicits._
+import org.train.rx.extention.SomeData
+
+import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
   * Created by kisilnazar on 24.07.16.
@@ -16,7 +15,7 @@ object ClumpApp extends App {
 
   val service = new SomeClumpService
 
-  val result: XorT[Clump, _root_.org.train.container.ClumpApp.service.Exception, SomeData] = for {
+  val result: XorT[Clump, ClumpApp.service.Exception, SomeData] = for {
     data1 <- service.getSomeDate()
     data2 <- service.getRemoteDate()
   } yield {

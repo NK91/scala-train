@@ -1,7 +1,9 @@
 package org.train.container
 
-import cats.data.XorT
+import cats.data.{Xor, XorT}
+import org.train.cats.{XorTFutureSomeService, XorTSomeService}
 import org.train.container.Container._
+import org.train.container.ContainerExtensions._
 import org.train.rx.extention.SomeData
 
 import scala.concurrent.Await
@@ -24,8 +26,22 @@ object ContainerApp extends App {
   }
 
 
-  val someDateResult = Await.result(result.value, 2 seconds)
-  println(someDateResult)
+  val someDateResult: Xor[String, SomeData] = Await.result(result.value, 2 seconds)
+  println("service with container:" + someDateResult)
+
+
+  val xorTOptionService = new XorTSomeService
+  val xorTFutureService = new XorTFutureSomeService
+
+  val secondResult = for {
+    data1 <- xorTOptionService.getSomeDate().toContainer
+    data2 <- xorTFutureService.getRemoteDate().toContainer
+    data3 <- SomeData(24324, "Some TestedData created in for-comprehension").toContainerWithLeftType[Exception]
+  } yield mergeResult(data1, mergeResult(data2, data3))
+
+  val someSecondDateResult: Xor[Exception, SomeData] = Await.result(secondResult.value, 2 seconds)
+  println("service with casting to container:" + someSecondDateResult)
+
 
   def mergeResult(d: SomeData, optData: SomeData): SomeData = SomeData(d.id, s"Merged ${d.data} with ${optData.data}")
 

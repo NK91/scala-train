@@ -1,6 +1,6 @@
-package org.train.container
+package org.train.clump
 
-import cats.{Functor, Monad}
+import cats.Monad
 import io.getclump.Clump
 
 /**
