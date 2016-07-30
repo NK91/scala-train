@@ -56,7 +56,7 @@ object FutureContainer {
   def apply[A](future: Future[A]): FutureContainer[A] = new FutureContainer(future)
 
 
-  implicit class FutureExtension[+A](future: Future[A]) {
+  implicit class FutureExtension[+A](val future: Future[A]) extends AnyVal {
     def toContainer = FutureContainer(future)
   }
 
@@ -81,7 +81,7 @@ class OptionContainer[+A](option: Option[A]) extends Container[A] {
 object OptionContainer {
   def apply[A](option: Option[A]): OptionContainer[A] = new OptionContainer(option)
 
-  implicit class OptionExtension[+A](option: Option[A]) {
+  implicit class OptionExtension[+A](val option: Option[A]) extends AnyVal {
     def toContainer = OptionContainer(option)
   }
 
