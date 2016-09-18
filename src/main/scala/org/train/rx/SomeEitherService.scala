@@ -21,7 +21,6 @@ package extention {
     def getRemoteDate(): T
   }
 
-
   class SomeEitherService extends SomeService[Either[Exception, SomeData]] {
 
     override def getSomeDate(): Either[Exception, SomeData] = {
@@ -44,18 +43,20 @@ package extention {
   class SomeRxService extends SomeService[Observable[SomeData]] {
 
     override def getSomeDate(): Observable[SomeData] = {
-      Observable(subscription => Try {
-        subscription.onNext(someEvaluating())
-      } recover {
-        case e: Throwable => subscription.onError(e)
+      Observable(subscription =>
+        Try {
+          subscription.onNext(someEvaluating())
+        } recover {
+          case e: Throwable => subscription.onError(e)
       })
     }
 
     override def getRemoteDate(): Observable[SomeData] = {
-      Observable(subscription => Try {
-        subscription.onNext(SomeData(1, "RemoteDate"))
-      } recover {
-        case e: Throwable => subscription.onError(e)
+      Observable(subscription =>
+        Try {
+          subscription.onNext(SomeData(1, "RemoteDate"))
+        } recover {
+          case e: Throwable => subscription.onError(e)
       })
     }
   }

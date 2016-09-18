@@ -11,13 +11,11 @@ import org.train.utlis.CatsUtils._
 object FoldingXorTOptionList extends FoldingList[Option] {
 
   def foldTest[A](list: List[A]): XorT[Option, Exception, List[A]] = {
-    val xorTList: List[XorT[Option, Exception, List[A]]] = transformToListXorT(
-        list)
+    val xorTList: List[XorT[Option, Exception, List[A]]] = transformToListXorT(list)
     fold(xorTList)
   }
 
-  def fold[A](xorTList: List[XorT[Option, Exception, List[A]]])
-    : XorT[Option, Exception, List[A]] = {
+  def fold[A](xorTList: List[XorT[Option, Exception, List[A]]]): XorT[Option, Exception, List[A]] = {
     Foldable[List].fold(xorTList)(xorTFMonoid[A])
   }
 
@@ -27,16 +25,14 @@ object FoldingXorTOptionList extends FoldingList[Option] {
         List.empty[T].toOptionXorT
 
       override def combine(x: XorT[Option, Exception, List[T]],
-                           y: XorT[Option, Exception, List[T]])
-        : XorT[Option, Exception, List[T]] =
+                           y: XorT[Option, Exception, List[T]]): XorT[Option, Exception, List[T]] =
         for {
           v1 <- x
           v2 <- y
         } yield v1 ++ v2
     }
 
-  def transformToListXorT[A](
-      list: List[A]): List[XorT[Option, Exception, List[A]]] = {
+  def transformToListXorT[A](list: List[A]): List[XorT[Option, Exception, List[A]]] = {
     val xorTList = list.map(_.toOptionXorT).map(x => x.map(List(_)))
     xorTList
   }
@@ -45,8 +41,7 @@ object FoldingXorTOptionList extends FoldingList[Option] {
     list.map(_.toOptionXorT)
   }
 
-  def foldMap[A](xorTList: List[XorT[Option, Exception, A]])
-    : XorT[Option, Exception, List[A]] = {
+  def foldMap[A](xorTList: List[XorT[Option, Exception, A]]): XorT[Option, Exception, List[A]] = {
     Foldable[List].foldMap(xorTList)(a => a.map(List(_)))(xorTFMonoid[A])
   }
 }

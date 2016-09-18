@@ -9,20 +9,23 @@ import scala.util.Try
   */
 class ExtendedEitherService extends SomeEitherService {
 
-  def getSomeDataListWithServiceAndDataFilters(filterConditions: SomeData => Boolean, filterServiceConditions: SomeData => Boolean, mergeResult: (SomeData, SomeData) => SomeData): Product with Serializable with Either[Exception, List[SomeData]] = {
+  def getSomeDataListWithServiceAndDataFilters(
+                                                filterConditions: SomeData => Boolean,
+                                                filterServiceConditions: SomeData => Boolean,
+                                                mergeResult: (SomeData, SomeData) => SomeData): Product with Serializable with Either[Exception, List[SomeData]] = {
     def extractingSomeData(someDate: SomeData): Option[SomeData] = {
-      getOptionalSomeData(filterServiceConditions(someDate)).right.toOption.flatten.map {
-        optionalData => mergeResult(someDate, optionalData)
+      getOptionalSomeData(filterServiceConditions(someDate)).right.toOption.flatten.map { optionalData =>
+        mergeResult(someDate, optionalData)
       }
     }
 
-
     val result = for {
       data <- getSomeDataList(6).right
-    } yield for {
-      d <- data.filter(filterConditions(_))
-      optData <- extractingSomeData(d)
-    } yield optData
+    } yield
+      for {
+        d <- data.filter(filterConditions(_))
+        optData <- extractingSomeData(d)
+      } yield optData
     result
   }
 

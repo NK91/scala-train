@@ -55,7 +55,6 @@ class FutureContainer[+A](future: Future[A]) extends Container[A] {
 object FutureContainer {
   def apply[A](future: Future[A]): FutureContainer[A] = new FutureContainer(future)
 
-
   implicit class FutureExtension[+A](val future: Future[A]) extends AnyVal {
     def toContainer = FutureContainer(future)
   }

@@ -9,10 +9,8 @@ trait IndexedExtractor {
 
 }
 
-trait IndexedExtractorWithError extends  IndexedExtractor {
-  override def indexExtractor(id: Long) : Int = {
+trait IndexedExtractorWithError extends IndexedExtractor {
+  override def indexExtractor(id: Long): Int = {
     throw new Exception(s"index extractor exception with $id")
   }
 }
-
-

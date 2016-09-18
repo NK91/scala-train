@@ -1,12 +1,11 @@
 package org.train.cats
 
 import cats.data.XorT
+import cats.std.future._
 import org.train.rx.extention.{SomeData, SomeService}
 
-import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
-import cats.std.future._
-
+import scala.concurrent.Future
 
 /**
   * Created by kisilnazar on 17.07.16.

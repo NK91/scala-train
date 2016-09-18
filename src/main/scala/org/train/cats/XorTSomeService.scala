@@ -20,9 +20,10 @@ class XorTSomeService extends SomeService[XorT[Option, Exception, SomeData]] {
     } get
   }
 
-  override def getRemoteDate(): XorT[Option, Exception, SomeData] = Try {
-    XorT.right[Option, Exception, SomeData](Some(SomeData(0, "Remote SomeDate")))
-  } recover {
-    case e: Exception => XorT.left[Option, Exception, SomeData](Some(e))
-  } get
+  override def getRemoteDate(): XorT[Option, Exception, SomeData] =
+    Try {
+      XorT.right[Option, Exception, SomeData](Some(SomeData(0, "Remote SomeDate")))
+    } recover {
+      case e: Exception => XorT.left[Option, Exception, SomeData](Some(e))
+    } get
 }
